@@ -9,7 +9,7 @@ import Foundation
 
 struct Forecast: Codable {
 	struct Daily: Codable {
-		struct Temp {
+		struct Temp: Codable {
 			let day: Float
 			let min: Float
 			let max: Float
@@ -36,10 +36,10 @@ struct Forecast: Codable {
 		let dt: Date
 		let sunrise: Date
 		let sunset: Date
-		let moonrise: String
+		let moonrise: Date
 		let moonset: Date
-		let moonphase: Float
-		let daily: [Daily]
+		let moonphase: Float?
+		let temp: Temp
 		let feels_like: FeelsLike
 		let pressure: Int
 		let humidity: Int
@@ -47,10 +47,15 @@ struct Forecast: Codable {
 		let wind_speed: Float
 		let wind_deg: Int
 		let wind_gust: Float
-		let weather: Weather
+		let weather: [Weather]
 		let clouds: Int
 		let pop: Float
-		let rain: Float
+		let rain: Float?
 		let uvi: Float
 	}
+	let lat: Float
+	let lon: Float
+	let timezone: String
+	let timezone_offset: Int
+	let daily: [Daily]
 }
