@@ -13,6 +13,7 @@
 		0C9CA8AC26DFA217002792E7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0C9CA8AB26DFA217002792E7 /* Preview Assets.xcassets */; };
 		0C9CA8B726DFA217002792E7 /* WeatherAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9CA8B626DFA217002792E7 /* WeatherAppTests.swift */; };
 		0C9CA8C226DFA217002792E7 /* WeatherAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9CA8C126DFA217002792E7 /* WeatherAppUITests.swift */; };
+		0C9CA8D026DFA237002792E7 /* Forecast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9CA8CF26DFA237002792E7 /* Forecast.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +46,7 @@
 		0C9CA8BD26DFA217002792E7 /* WeatherAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WeatherAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0C9CA8C126DFA217002792E7 /* WeatherAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherAppUITests.swift; sourceTree = "<group>"; };
 		0C9CA8C326DFA217002792E7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0C9CA8CF26DFA237002792E7 /* Forecast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Forecast.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +102,7 @@
 				0C9CA8A826DFA217002792E7 /* Assets.xcassets */,
 				0C9CA8AD26DFA217002792E7 /* Info.plist */,
 				0C9CA8AA26DFA217002792E7 /* Preview Content */,
+				0C9CA8CF26DFA237002792E7 /* Forecast.swift */,
 			);
 			path = WeatherApp;
 			sourceTree = "<group>";
@@ -260,6 +263,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0C9CA8A726DFA216002792E7 /* ContentView.swift in Sources */,
+				0C9CA8D026DFA237002792E7 /* Forecast.swift in Sources */,
 				0C9CA8A526DFA216002792E7 /* WeatherAppApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
