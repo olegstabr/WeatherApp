@@ -7,12 +7,8 @@
 
 import Foundation
 
-class ForecastViewModel {
+struct ForecastViewModel {
 	let forecast: Forecast.Daily
-	
-	init(forecast: Forecast.Daily) {
-		self.forecast = forecast
-	}
 
 	private static var dateFormatter: DateFormatter {
 		let dateFormatter = DateFormatter()
@@ -28,6 +24,7 @@ class ForecastViewModel {
 	
 	private static var numberPercentFormatter: NumberFormatter {
 		let numberFormatter = NumberFormatter()
+		numberFormatter.maximumFractionDigits = 0
 		numberFormatter.numberStyle = .percent
 		return numberFormatter
 	}
@@ -49,7 +46,7 @@ class ForecastViewModel {
 	}
 	
 	var pop: String {
-		"💧: \(Self.numberPercentFormatter.string(for: forecast.temp.min) ?? "0")%"
+		"💧: \(Self.numberPercentFormatter.string(for: forecast.pop) ?? "0%")"
 	}
 	
 	var clouds: String {
