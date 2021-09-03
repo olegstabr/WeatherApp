@@ -58,7 +58,7 @@ struct ContentView: View {
 				.listStyle(PlainListStyle())
 			}
 			.padding(.horizontal)
-			.navigationTitle("Weather App")
+			.navigationTitle("Oleg Weather")
 		}
     }
 }
