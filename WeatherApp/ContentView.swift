@@ -13,6 +13,13 @@ struct ContentView: View {
     var body: some View {
 		NavigationView {
 			VStack {
+				Picker(selection: $forecastListVM.system, label: Text("System")) {
+					Text("°C").tag(0)
+					Text("°F").tag(1)
+				}
+				.pickerStyle(SegmentedPickerStyle())
+				.frame(width: 200)
+				.padding(.vertical)
 				HStack {
 					TextField("Enter location", text: $forecastListVM.location)
 						.textFieldStyle(RoundedBorderTextFieldStyle())
