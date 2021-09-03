@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SDWebImageSwiftUI
 
 struct ContentView: View {
 	@StateObject private var forecastListVM = ForecastListViewModel()
@@ -35,11 +36,13 @@ struct ContentView: View {
 						Text("\(day.day)")
 							.fontWeight(.bold)
 						HStack(alignment: .center) {
-							Image(systemName: "hourglass")
-								.font(.title)
-								.frame(width: 50, height: 50)
-								.background(RoundedRectangle(cornerRadius: 10)
-												.fill(Color.green))
+							WebImage(url: day.weatherIconURL)
+								.resizable()
+								.placeholder {
+									Image(systemName: "hourglass")
+								}
+								.scaledToFit()
+								.frame(width: 100)
 							VStack(alignment: .leading) {
 								Text("\(day.overview)")
 								HStack {
