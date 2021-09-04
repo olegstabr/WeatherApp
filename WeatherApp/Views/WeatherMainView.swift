@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  WeatherMainView.swift
 //  WeatherApp
 //
 //  Created by Олег Стабровский on 01.09.2021.
@@ -8,7 +8,7 @@
 import SwiftUI
 import SDWebImageSwiftUI
 
-struct ContentView: View {
+struct WeatherMainView: View {
 	@StateObject private var forecastListVM = ForecastListViewModel()
 	
     var body: some View {
@@ -107,6 +107,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        WeatherMainView()
     }
 }
