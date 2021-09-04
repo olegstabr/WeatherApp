@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0C54753F26E2750C002A0AB9 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 0C54753E26E2750C002A0AB9 /* SDWebImageSwiftUI */; };
+		0C54754126E3020D002A0AB9 /* UIApplication+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C54754026E3020D002A0AB9 /* UIApplication+Extension.swift */; };
 		0C9CA8A526DFA216002792E7 /* WeatherAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9CA8A426DFA216002792E7 /* WeatherAppApp.swift */; };
 		0C9CA8A726DFA216002792E7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9CA8A626DFA216002792E7 /* ContentView.swift */; };
 		0C9CA8A926DFA217002792E7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0C9CA8A826DFA217002792E7 /* Assets.xcassets */; };
@@ -38,6 +39,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0C54754026E3020D002A0AB9 /* UIApplication+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extension.swift"; sourceTree = "<group>"; };
 		0C9CA8A126DFA216002792E7 /* WeatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0C9CA8A426DFA216002792E7 /* WeatherAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherAppApp.swift; sourceTree = "<group>"; };
 		0C9CA8A626DFA216002792E7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -111,6 +113,7 @@
 				0C9CA8AD26DFA217002792E7 /* Info.plist */,
 				0C9CA8AA26DFA217002792E7 /* Preview Content */,
 				0C9CA8CF26DFA237002792E7 /* Forecast.swift */,
+				0C54754026E3020D002A0AB9 /* UIApplication+Extension.swift */,
 				0C9CA8D126DFA9D5002792E7 /* APIService.swift */,
 				0C9CA8D326E1213E002792E7 /* ForecastViewModel.swift */,
 				0C9CA8D526E12686002792E7 /* ForecastListViewModel.swift */,
@@ -285,6 +288,7 @@
 				0C9CA8A526DFA216002792E7 /* WeatherAppApp.swift in Sources */,
 				0C9CA8D426E1213E002792E7 /* ForecastViewModel.swift in Sources */,
 				0C9CA8D626E12686002792E7 /* ForecastListViewModel.swift in Sources */,
+				0C54754126E3020D002A0AB9 /* UIApplication+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
