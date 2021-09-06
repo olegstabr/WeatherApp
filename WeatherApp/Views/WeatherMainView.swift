@@ -10,11 +10,24 @@ import SDWebImageSwiftUI
 
 struct WeatherMainView: View {
 	@StateObject private var forecastListVM = ForecastListViewModel()
+	@StateObject private var locationVM = LocationViewModel()
 	
     var body: some View {
 		ZStack {
 			NavigationView {
 				VStack {
+					Button(action: {
+						if let placemark = locationVM.currentPlacemark {
+							if let city = placemark.subAdministrativeArea {
+								forecastListVM.location = city
+							}
+						}
+					}, label: {
+						RoundedRectangle(cornerRadius: 5)
+							.frame(height: 60)
+							.foregroundColor(.gray)
+							.overlay(Text("Локация").foregroundColor(.black).font(.largeTitle))
+					})
 					Picker(selection: $forecastListVM.system, label: Text("System")) {
 						Text("°C").tag(0)
 						Text("°F").tag(1)
@@ -101,9 +114,11 @@ struct WeatherMainView: View {
 				}
 			}
 		}
+		.onAppear {
+			locationVM.requestPermission()
+		}
     }
 }
-
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
