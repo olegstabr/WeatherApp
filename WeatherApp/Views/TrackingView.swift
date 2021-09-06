@@ -18,17 +18,17 @@ struct TrackingView: View {
 					HStack {
 						PairView(
 							leftText: "Lat",
-							rightText: String(format: "%.3f", coordinate?.latitude ?? 0)
+							rightText: String(format: "%.4f", coordinate?.latitude ?? 0)
 						)
 						PairView(
 						 leftText: "Lng",
-						 rightText: String(format: "%.3f", coordinate?.longitude ?? 0)
+						 rightText: String(format: "%.4f", coordinate?.longitude ?? 0)
 					 )
 					}
 					HStack {
 						PairView(
 							leftText: "Alt",
-							rightText: String(format: "%.3f", locationViewModel.lastSeenLocation?.altitude ?? 0)
+							rightText: String(format: "%.4f", locationViewModel.lastSeenLocation?.altitude ?? 0)
 						)
 						PairView(
 						 leftText: "Speed",
