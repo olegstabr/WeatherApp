@@ -16,17 +16,25 @@ struct WeatherMainView: View {
 		ZStack {
 			NavigationView {
 				VStack {
+					NavigationLink(
+						destination: TrackingView()) {
+						RoundedRectangle(cornerRadius: 5)
+							.frame(height: 60)
+							.foregroundColor(.gray)
+							.overlay(Text("GPS Info").foregroundColor(.black).font(.largeTitle))
+					}
 					Button(action: {
 						if let placemark = locationVM.currentPlacemark {
 							if let city = placemark.subAdministrativeArea {
 								forecastListVM.location = city
+								forecastListVM.getWeatherForecast()
 							}
 						}
 					}, label: {
 						RoundedRectangle(cornerRadius: 5)
 							.frame(height: 60)
 							.foregroundColor(.gray)
-							.overlay(Text("Локация").foregroundColor(.black).font(.largeTitle))
+							.overlay(Text("Current Location").foregroundColor(.black).font(.largeTitle))
 					})
 					Picker(selection: $forecastListVM.system, label: Text("System")) {
 						Text("°C").tag(0)

@@ -16,7 +16,7 @@ struct PairView: View {
 			Text("\(leftText): ")
 			Text("\(rightText)")
 		}
-		.font(.largeTitle)
+		.font(.title3)
 		.padding()
     }
 }
