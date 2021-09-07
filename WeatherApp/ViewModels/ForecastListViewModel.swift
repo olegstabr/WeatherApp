@@ -19,6 +19,7 @@ class ForecastListViewModel: ObservableObject {
 	@Published var forecasts: [ForecastViewModel] = []
 	@Published var isLoading = false
 	@Published var location = ""
+	@Published var isNeedToFetchWeather = false
 	@AppStorage("location") var storageLocation = ""
 	@AppStorage("system") var system = 0 {
 		didSet {
@@ -30,6 +31,11 @@ class ForecastListViewModel: ObservableObject {
 	
 	init() {
 		location = storageLocation
+		getWeatherForecast()
+	}
+	
+	func setLocationAndFetchWeather(location: String) {
+		self.location = location
 		getWeatherForecast()
 	}
 	

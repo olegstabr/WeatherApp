@@ -28,10 +28,12 @@ struct WeatherMainView: View {
 						.frame(width: geometry.size.width, height: geometry.size.height)
 						.offset(x: self.isMenuShow ? geometry.size.width / 2 : 0)
 						.disabled(self.isMenuShow)
+						.environmentObject(ForecastListViewModel())
 					if isMenuShow {
 						MenuView()
 							.frame(width: geometry.size.width / 2)
 							.transition(.move(edge: .leading))
+							.environmentObject(ForecastListViewModel())
 					}
 				}
 				.gesture(drag)
@@ -45,13 +47,13 @@ struct WeatherMainView: View {
 					Image(systemName: "line.horizontal.3")
 						.imageScale(.large)
 				})
-		))
+			))
 		}
 	}
 }
 
 struct MainView: View {
-	@StateObject private var forecastListVM = ForecastListViewModel()
+	@EnvironmentObject private var forecastListVM: ForecastListViewModel
 	@StateObject private var locationVM = LocationViewModel()
 	@Binding var isMenuShow: Bool
 	
@@ -59,18 +61,10 @@ struct MainView: View {
 		ZStack(alignment: .leading) {
 			NavigationView {
 				VStack {
-					NavigationLink(
-						destination: TrackingView()) {
-						RoundedRectangle(cornerRadius: 5)
-							.frame(height: 60)
-							.foregroundColor(.gray)
-							.overlay(Text("GPS Info").foregroundColor(.black).font(.largeTitle))
-					}
 					Button(action: {
 						if let placemark = locationVM.currentPlacemark {
 							if let city = placemark.subAdministrativeArea {
-								forecastListVM.location = city
-								forecastListVM.getWeatherForecast()
+								forecastListVM.setLocationAndFetchWeather(location: city)
 							}
 						}
 					}, label: {
@@ -94,8 +88,7 @@ struct MainView: View {
 							.textFieldStyle(RoundedBorderTextFieldStyle())
 							.overlay(
 								Button(action: {
-									forecastListVM.location = ""
-									forecastListVM.getWeatherForecast()
+									forecastListVM.setLocationAndFetchWeather(location: "")
 								}) {
 									Image(systemName: "xmark.circle")
 										.foregroundColor(.gray)

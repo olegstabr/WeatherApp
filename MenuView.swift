@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct MenuView: View {
+	@EnvironmentObject private var forecastListVM: ForecastListViewModel
+	@StateObject private var locationVM = LocationViewModel()
+	
     var body: some View {
 		VStack(alignment: .leading) {
 			HStack {
@@ -27,6 +30,34 @@ struct MenuView: View {
 					.foregroundColor(.gray)
 					.font(.headline)
 			}
+			.padding(.top, 30)
+			NavigationLink(destination: TrackingView()) {
+				HStack {
+					Image(systemName: "location.viewfinder")
+						.foregroundColor(.gray)
+						.imageScale(.large)
+					Text("GPS Info")
+						.foregroundColor(.gray)
+						.font(.headline)
+				}
+				.padding(.top, 30)
+			}
+			Button(action: {
+				if let placemark = locationVM.currentPlacemark {
+					if let city = placemark.subAdministrativeArea {
+						forecastListVM.setLocationAndFetchWeather(location: city)
+					}
+				}
+			}, label: {
+				HStack {
+					Image(systemName: "location.fill")
+						.foregroundColor(.gray)
+						.imageScale(.large)
+					Text("Current Location")
+						.foregroundColor(.gray)
+						.font(.headline)
+				}
+			})
 			.padding(.top, 30)
 			HStack {
 				Image(systemName: "gear")
@@ -48,6 +79,6 @@ struct MenuView: View {
 
 struct MenuView_Previews: PreviewProvider {
     static var previews: some View {
-        MenuView()
+		MenuView()
     }
 }
