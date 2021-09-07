@@ -9,11 +9,54 @@ import SwiftUI
 import SDWebImageSwiftUI
 
 struct WeatherMainView: View {
+	@State var isMenuShow = false
+	
+	var body: some View {
+		let drag = DragGesture()
+		 .onEnded {
+			 if $0.translation.width < 100 {
+				 withAnimation {
+					 self.isMenuShow = false
+				 }
+			 }
+		 }
+		
+		NavigationView {
+			GeometryReader { geometry in
+				ZStack(alignment: .leading) {
+					MainView(isMenuShow: self.$isMenuShow)
+						.frame(width: geometry.size.width, height: geometry.size.height)
+						.offset(x: self.isMenuShow ? geometry.size.width / 2 : 0)
+						.disabled(self.isMenuShow)
+					if isMenuShow {
+						MenuView()
+							.frame(width: geometry.size.width / 2)
+							.transition(.move(edge: .leading))
+					}
+				}
+				.gesture(drag)
+			}
+			.navigationBarItems(leading: (
+				Button(action: {
+					withAnimation {
+						self.isMenuShow.toggle()
+					}
+				}, label: {
+					Image(systemName: "line.horizontal.3")
+						.imageScale(.large)
+				})
+		))
+		}
+	}
+}
+
+struct MainView: View {
 	@StateObject private var forecastListVM = ForecastListViewModel()
 	@StateObject private var locationVM = LocationViewModel()
+	@Binding var isMenuShow: Bool
 	
-    var body: some View {
-		ZStack {
+	var body: some View {
+		ZStack(alignment: .leading) {
 			NavigationView {
 				VStack {
 					NavigationLink(
@@ -125,7 +168,7 @@ struct WeatherMainView: View {
 		.onAppear {
 			locationVM.requestPermission()
 		}
-    }
+	}
 }
 
 struct ContentView_Previews: PreviewProvider {
