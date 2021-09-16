@@ -27,19 +27,18 @@ struct WeatherMainView: View {
 				ZStack(alignment: .leading) {
 					MainView(isMenuShow: self.$isMenuShow)
 						.frame(width: geometry.size.width, height: geometry.size.height)
-						.offset(x: self.isMenuShow ? geometry.size.width / 2 : 0)
+						.offset(x: self.isMenuShow ? 7 * geometry.size.width / 10 : 0)
 						.disabled(self.isMenuShow)
 						.environmentObject(forecastListVM)
 					if isMenuShow {
 						MenuView()
-							.frame(width: geometry.size.width / 2)
+							.frame(width: 7 * geometry.size.width / 10)
 							.transition(.move(edge: .leading))
 							.environmentObject(forecastListVM)
 					}
 				}
 				.gesture(drag)
 			}
-			.navigationTitle("Oleg Weather")
 			.navigationBarItems(leading: (
 				Button(action: {
 					withAnimation {
