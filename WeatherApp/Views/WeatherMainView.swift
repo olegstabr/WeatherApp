@@ -19,7 +19,11 @@ struct WeatherMainView: View {
 				 withAnimation {
 					 self.isMenuShow = false
 				 }
-			 }
+			} else {
+				withAnimation {
+					self.isMenuShow = true
+				}
+			}
 		 }
 		
 		NavigationView {
