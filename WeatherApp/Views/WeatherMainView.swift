@@ -10,6 +10,7 @@ import SDWebImageSwiftUI
 
 struct WeatherMainView: View {
 	@State var isMenuShow = false
+	@StateObject var forecastListVM = ForecastListViewModel()
 	
 	var body: some View {
 		let drag = DragGesture()
@@ -28,12 +29,12 @@ struct WeatherMainView: View {
 						.frame(width: geometry.size.width, height: geometry.size.height)
 						.offset(x: self.isMenuShow ? geometry.size.width / 2 : 0)
 						.disabled(self.isMenuShow)
-						.environmentObject(ForecastListViewModel())
+						.environmentObject(forecastListVM)
 					if isMenuShow {
 						MenuView()
 							.frame(width: geometry.size.width / 2)
 							.transition(.move(edge: .leading))
-							.environmentObject(ForecastListViewModel())
+							.environmentObject(forecastListVM)
 					}
 				}
 				.gesture(drag)
@@ -61,18 +62,6 @@ struct MainView: View {
 		ZStack(alignment: .leading) {
 			NavigationView {
 				VStack {
-					Button(action: {
-						if let placemark = locationVM.currentPlacemark {
-							if let city = placemark.subAdministrativeArea {
-								forecastListVM.setLocationAndFetchWeather(location: city)
-							}
-						}
-					}, label: {
-						RoundedRectangle(cornerRadius: 5)
-							.frame(height: 60)
-							.foregroundColor(.gray)
-							.overlay(Text("Current Location").foregroundColor(.black).font(.largeTitle))
-					})
 					Picker(selection: $forecastListVM.system, label: Text("System")) {
 						Text("°C").tag(0)
 						Text("°F").tag(1)
