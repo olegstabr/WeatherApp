@@ -39,6 +39,7 @@ struct WeatherMainView: View {
 				}
 				.gesture(drag)
 			}
+			.navigationTitle("Oleg Weather")
 			.navigationBarItems(leading: (
 				Button(action: {
 					withAnimation {
@@ -60,70 +61,67 @@ struct MainView: View {
 	
 	var body: some View {
 		ZStack(alignment: .leading) {
-			NavigationView {
-				VStack {
-					Picker(selection: $forecastListVM.system, label: Text("System")) {
-						Text("°C").tag(0)
-						Text("°F").tag(1)
-					}
-					.pickerStyle(SegmentedPickerStyle())
-					.frame(width: 200)
-					.padding(.vertical)
-					HStack {
-						TextField("Enter location", text: $forecastListVM.location,
-								  onCommit: {
-									forecastListVM.getWeatherForecast()
-								  })
-							.textFieldStyle(RoundedBorderTextFieldStyle())
-							.overlay(
-								Button(action: {
-									forecastListVM.setLocationAndFetchWeather(location: "")
-								}) {
-									Image(systemName: "xmark.circle")
-										.foregroundColor(.gray)
+			VStack {
+				Picker(selection: $forecastListVM.system, label: Text("System")) {
+					Text("°C").tag(0)
+					Text("°F").tag(1)
+				}
+				.pickerStyle(SegmentedPickerStyle())
+				.frame(width: 200)
+				.padding(.vertical)
+				HStack {
+					TextField("Enter location", text: $forecastListVM.location,
+							  onCommit: {
+								forecastListVM.getWeatherForecast()
+							  })
+						.textFieldStyle(RoundedBorderTextFieldStyle())
+						.overlay(
+							Button(action: {
+								forecastListVM.setLocationAndFetchWeather(location: "")
+							}) {
+								Image(systemName: "xmark.circle")
+									.foregroundColor(.gray)
+							}
+							.padding(.horizontal),
+							alignment: .trailing
+						)
+					Button(action: {
+						forecastListVM.getWeatherForecast()
+					}, label: {
+						Image(systemName: "magnifyingglass.circle")
+							.font(.title3)
+					})
+				}
+				List(forecastListVM.forecasts, id: \.day) { day in
+					VStack(alignment: .leading) {
+						Text("\(day.day)")
+							.fontWeight(.bold)
+						HStack(alignment: .center) {
+							WebImage(url: day.weatherIconURL)
+								.resizable()
+								.placeholder {
+									Image(systemName: "hourglass")
 								}
-								.padding(.horizontal),
-								alignment: .trailing
-							)
-						Button(action: {
-							forecastListVM.getWeatherForecast()
-						}, label: {
-							Image(systemName: "magnifyingglass.circle")
-								.font(.title3)
-						})
-					}
-					List(forecastListVM.forecasts, id: \.day) { day in
-						VStack(alignment: .leading) {
-							Text("\(day.day)")
-								.fontWeight(.bold)
-							HStack(alignment: .center) {
-								WebImage(url: day.weatherIconURL)
-									.resizable()
-									.placeholder {
-										Image(systemName: "hourglass")
-									}
-									.scaledToFit()
-									.frame(width: 100)
-								VStack(alignment: .leading) {
-									Text("\(day.overview)")
-										.font(.title2)
-									HStack {
-										Text("\(day.high)")
-										Text("\(day.low)")
-									}
-									HStack {
-										Text("\(day.clouds)")
-										Text("\(day.pop)")
-									}
-									Text("\(day.humidity)")
+								.scaledToFit()
+								.frame(width: 100)
+							VStack(alignment: .leading) {
+								Text("\(day.overview)")
+									.font(.title2)
+								HStack {
+									Text("\(day.high)")
+									Text("\(day.low)")
 								}
+								HStack {
+									Text("\(day.clouds)")
+									Text("\(day.pop)")
+								}
+								Text("\(day.humidity)")
 							}
 						}
 					}
-					.listStyle(PlainListStyle())
 				}
+				.listStyle(PlainListStyle())
 				.padding(.horizontal)
-				.navigationTitle("Oleg Weather")
 				.alert(item: $forecastListVM.appError) { appAlert in
 					Alert(title: Text("Error"), message: Text("""
 						\(appAlert.errorString)
