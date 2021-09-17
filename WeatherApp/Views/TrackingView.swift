@@ -12,42 +12,45 @@ struct TrackingView: View {
 	@StateObject var locationViewModel = LocationViewModel()
 	
 	var body: some View {
-		ZStack {
-			NavigationView {
-				VStack {
-					HStack {
-						PairView(
-							leftText: "Lat",
-							rightText: String(format: "%.4f", coordinate?.latitude ?? 0)
-						)
-						PairView(
-						 leftText: "Lng",
-						 rightText: String(format: "%.4f", coordinate?.longitude ?? 0)
-					 )
-					}
-					HStack {
-						PairView(
-							leftText: "Alt",
-							rightText: String(format: "%.4f", locationViewModel.lastSeenLocation?.altitude ?? 0)
-						)
-						PairView(
-						 leftText: "Speed",
-						 rightText: String(format: "%.2f", locationViewModel.lastSeenLocation?.speed ?? 0)
-					 )
-					}
-					HStack {
-						PairView(
-							leftText: "Country",
-							rightText: locationViewModel.currentPlacemark?.country ?? ""
-						)
-						PairView(
-						 leftText: "City",
-						 rightText: locationViewModel.currentPlacemark?.administrativeArea ?? ""
-					 )
-					}
-				}
+		VStack {
+			MapView(coordinate:
+					   CLLocationCoordinate2D(
+						   latitude: coordinate?.latitude ?? MapConstants.novosibirksCoords.latitude,
+						   longitude: coordinate?.longitude ?? MapConstants.novosibirksCoords.longitude))
+				.ignoresSafeArea(.all)
+			Spacer()
+			HStack {
+			   PairView(
+				   leftText: "Lat",
+				   rightText: String(format: "%.4f", coordinate?.latitude ?? 0)
+			   )
+			   PairView(
+				leftText: "Lng",
+				rightText: String(format: "%.4f", coordinate?.longitude ?? 0)
+			)
 			}
-		}
+			HStack {
+			   PairView(
+				   leftText: "Alt",
+				   rightText: String(format: "%.4f", locationViewModel.lastSeenLocation?.altitude ?? 0)
+			   )
+			   PairView(
+				leftText: "Speed",
+				rightText: String(format: "%.2f", locationViewModel.lastSeenLocation?.speed ?? 0)
+			)
+			}
+			HStack {
+			   PairView(
+				   leftText: "Country",
+				   rightText: locationViewModel.currentPlacemark?.country ?? ""
+			   )
+			   PairView(
+				leftText: "City",
+				rightText: locationViewModel.currentPlacemark?.administrativeArea ?? ""
+			   )
+			}
+	   }
+		.navigationBarTitle("GPS Info", displayMode: .inline)
 	}
 	
 	var coordinate: CLLocationCoordinate2D? {

@@ -24,6 +24,7 @@
 		0C9CA8D226DFA9D5002792E7 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9CA8D126DFA9D5002792E7 /* APIService.swift */; };
 		0C9CA8D426E1213E002792E7 /* ForecastViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9CA8D326E1213E002792E7 /* ForecastViewModel.swift */; };
 		0C9CA8D626E12686002792E7 /* ForecastListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9CA8D526E12686002792E7 /* ForecastListViewModel.swift */; };
+		0CFD08FD26F48E490018CAF3 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFD08FC26F48E490018CAF3 /* MapView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +67,7 @@
 		0C9CA8D126DFA9D5002792E7 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		0C9CA8D326E1213E002792E7 /* ForecastViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastViewModel.swift; sourceTree = "<group>"; };
 		0C9CA8D526E12686002792E7 /* ForecastListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastListViewModel.swift; sourceTree = "<group>"; };
+		0CFD08FC26F48E490018CAF3 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +138,7 @@
 				0C9CA8A626DFA216002792E7 /* WeatherMainView.swift */,
 				0C54759A26E51A3E002A0AB9 /* TrackingView.swift */,
 				0C54759C26E51BD8002A0AB9 /* PairView.swift */,
+				0CFD08FC26F48E490018CAF3 /* MapView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -341,6 +344,7 @@
 				0C54759F26E771DB002A0AB9 /* MenuView.swift in Sources */,
 				0C9CA8D026DFA237002792E7 /* Forecast.swift in Sources */,
 				0C54754326E30FD7002A0AB9 /* APIServiceCombine.swift in Sources */,
+				0CFD08FD26F48E490018CAF3 /* MapView.swift in Sources */,
 				0C9CA8D226DFA9D5002792E7 /* APIService.swift in Sources */,
 				0C9CA8A526DFA216002792E7 /* WeatherAppApp.swift in Sources */,
 				0C9CA8D426E1213E002792E7 /* ForecastViewModel.swift in Sources */,
